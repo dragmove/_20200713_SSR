@@ -4,8 +4,8 @@ type ButtonProps = {
   type?: "button" | "submit";
   name?: string;
   text?: string;
-  clickCallback?: (data: object) => void;
   isEnabled: boolean;
+  clickCallback?: (data: object) => void;
 
   // corner-radius
   // backgroundColor

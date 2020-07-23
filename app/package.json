@@ -11,11 +11,20 @@
     "@types/node": "^14.0.22",
     "@types/react": "^16.9.43",
     "@types/react-dom": "^16.9.8",
+    "@zeit/next-sass": "^1.0.1",
+    "browserslist": "^4.13.0",
+    "classnames": "^2.2.6",
     "next": "9.4.4",
+    "node-sass": "^4.14.1",
     "react": "16.13.1",
-    "react-dom": "16.13.1"
+    "react-dom": "16.13.1",
+    "sass": "^1.26.10"
   },
   "devDependencies": {
+    "tslint-config-standard": "^9.0.0",
     "typescript": "^3.9.6"
-  }
+  },
+  "browserslist": [
+    "defaults"
+  ]
 }

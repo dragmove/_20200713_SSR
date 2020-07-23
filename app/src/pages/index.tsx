@@ -1,31 +1,35 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import Link from "next/link";
-import Head from "next/head";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import Link from 'next/link';
+import Head from 'next/head';
+import Layout, { name, siteTitle } from '../components/layout';
+import utilStyles from '../styles/utils.module.scss';
+
+// TODO: learn how to use browserslist // Ref: https://github.com/browserslist
+// TODO: make env to compile sass
+
+/*
+// TODO: https://nextjs.org/learn/basics/assets-metadata-css
+static file, // x
+<head> for each page, // x
+make reusable component with css modules, // 
+add global css in 'pages/_app.js'
+tips for Next.js
+*/
 
 export default function Home() {
   return (
-    <div className="container">
+    <Layout home>
       <Head>
-        <title>Next.js App</title>
-        <link rel="icon" href="/favicon.ico" />
+        <title>{siteTitle}</title>
       </Head>
 
-      <main>
-        <h1>hello</h1>
-
-        <article>
-          <p>
-            Learn <a href="https://nextjs.org">Next.js!</a>
-          </p>
-          <p>
-            Read :
-            <Link href="/posts/first-post">
-              <a>this page!</a>
-            </Link>
-          </p>
-        </article>
-      </main>
-    </div>
+      <section className={`${utilStyles.headingMd} ${utilStyles.hoverAction}`}>
+        <p>I'm {name}</p>
+        <p>
+          This is sample <a href="https://nextjs.org/learn">our Next.js tutorial</a>
+        </p>
+      </section>
+    </Layout>
   );
 }
