@@ -1,11 +1,12 @@
+import utilStyles from '../styles/utils.module.scss';
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Link from 'next/link';
 import Head from 'next/head';
 import Layout, { name, siteTitle } from '../components/layout';
-import utilStyles from '../styles/utils.module.scss';
+import { getSortedPostsData } from '../lib/posts';
 
-// TODO: learn how to use browserslist // Ref: https://github.com/browserslist
 // TODO: make env to compile sass
 
 /*
@@ -17,7 +18,17 @@ add global css in 'pages/_app.js'
 tips for Next.js
 */
 
-export default function Home() {
+export async function getStaticProps() {
+  const allPostsData = getSortedPostsData();
+
+  return {
+    props: {
+      allPostsData,
+    },
+  };
+}
+
+export default function Home({ allPostsData }) {
   return (
     <Layout home>
       <Head>
@@ -30,6 +41,31 @@ export default function Home() {
           This is sample <a href="https://nextjs.org/learn">our Next.js tutorial</a>
         </p>
       </section>
+
+      <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
+        <h2 className={utilStyles.headingLg}>Blog</h2>
+        <ul className={utilStyles.list}>
+          {allPostsData.map(({ id, date, title }) => (
+            <li className={utilStyles.listItem} key={id}>
+              {title}
+              <br />
+              {id}
+              <br />
+              {date}
+            </li>
+          ))}
+        </ul>
+      </section>
     </Layout>
   );
 }
+
+/*
+// TODO: https://nextjs.org/learn/basics/dynamic-routes
+How to statically generate pages with dynamic routes using getStaticPaths.
+How to write getStaticProps to fetch the data for each blog post.
+How to render markdown using remark.
+How to pretty-print date strings.
+How to link to a page with dynamic routes.
+Some useful information on dynamic routes.
+*/
