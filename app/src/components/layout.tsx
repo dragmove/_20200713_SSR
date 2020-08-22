@@ -3,14 +3,16 @@ import utilStyles from '../styles/utils.module.scss';
 import Link from 'next/link';
 import Head from 'next/head';
 
-export const name = 'Hyunseok Kim';
-export const siteTitle = 'Next.js Sample Website';
+export const title = 'Mapbox gl';
+export const siteTitle = 'Next.js + React + Mapbox GL JS';
 
 const Layout = ({ children, home }: any) => {
   return (
     <div className={styles.container}>
       <Head>
         <link rel="icon" href="favicon.ico" />
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="description" content="Learn how to build Nex.js application" />
         <meta name="og:title" content={siteTitle} />
       </Head>
@@ -18,12 +20,7 @@ const Layout = ({ children, home }: any) => {
       <header className={styles.header}>
         {home ? (
           <>
-            <img
-              src="/images/profile.png"
-              alt={name}
-              className={`${styles.headerHomeImage} ${utilStyles.borderCircle}`}
-            />
-            <h1 className={utilStyles.heading2Xl}>{name}</h1>
+            <h1 className={utilStyles.heading2Xl}>{title}</h1>
           </>
         ) : (
           <>
@@ -32,14 +29,14 @@ const Layout = ({ children, home }: any) => {
                 <img
                   src="/images/profile.png"
                   className={`${styles.headerImage} ${utilStyles.borderCircle}`}
-                  alt={name}
+                  alt={title}
                 />
               </a>
             </Link>
 
             <h2 className={utilStyles.heading}>
               <Link href="/">
-                <a className={utilStyles.colorInherit}>{name}</a>
+                <a className={utilStyles.colorInherit}>{title}</a>
               </Link>
             </h2>
           </>
