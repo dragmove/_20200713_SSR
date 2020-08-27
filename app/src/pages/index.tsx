@@ -40,6 +40,8 @@ export default function Home({ allPostsData }) {
         <p>
           This is sample <a href="https://nextjs.org/learn">our Next.js tutorial</a>
         </p>
+        <Link href="/about"><a>link to /about page</a></Link>
+        <Link href="/testAntD"><a>link to /testAntD page</a></Link>
       </section>
 
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
