@@ -7,6 +7,7 @@ import Link from 'next/link';
 import Head from 'next/head';
 import Layout, { name, siteTitle } from '../components/layout';
 import mapboxgl from 'mapbox-gl';
+import { mapboxglDatas } from '../shared/constant';
 // import { getSortedPostsData } from '../lib/posts';
 
 // TODO: make env to compile sass
@@ -37,11 +38,8 @@ export async function getStaticProps() {
 // payload: registered / public / private claim(key, value information)
 
 // signature
-const mapboxglToken: string =
-  'pk.eyJ1IjoiZHJhZ21vdmUiLCJhIjoiY2tkc3hrOGw2MGppMzJxcXNweW82aHVkdSJ9.Jknx5RF4tQyeI5M1vwOZOg';
-
 interface PropTypes {}
-const Home: FC<PropTypes> = (propTypes: PropTypes) => {
+const Home: FC<PropTypes> = (props: PropTypes) => {
   const [map, setMap] = useState(null);
 
   const mapContainer = useRef(null);
@@ -55,7 +53,7 @@ const Home: FC<PropTypes> = (propTypes: PropTypes) => {
 
   useEffect(() => {
     // mapboxgl env
-    mapboxgl.accessToken = mapboxglToken;
+    mapboxgl.accessToken = mapboxglDatas.token;
 
     const initMap = ({ setMap, mapContainer }) => {
       const _map = new mapboxgl.Map({
