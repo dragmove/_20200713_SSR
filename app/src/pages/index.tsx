@@ -1,7 +1,7 @@
 import utilStyles from '../styles/utils.module.scss';
 import siteStyles from '../styles/site.module.scss';
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, FC } from 'react';
 import ReactDOM from 'react-dom';
 import Link from 'next/link';
 import Head from 'next/head';
@@ -32,7 +32,16 @@ export async function getStaticProps() {
 }
 */
 
-export default function Home() {
+// + Mapbox token as a JWT token
+// header: token type, hashing algorithm
+// payload: registered / public / private claim(key, value information)
+
+// signature
+const mapboxglToken: string =
+  'pk.eyJ1IjoiZHJhZ21vdmUiLCJhIjoiY2tkc3hrOGw2MGppMzJxcXNweW82aHVkdSJ9.Jknx5RF4tQyeI5M1vwOZOg';
+
+interface PropTypes {}
+const Home: FC<PropTypes> = (propTypes: PropTypes) => {
   const [map, setMap] = useState(null);
 
   const mapContainer = useRef(null);
@@ -46,7 +55,7 @@ export default function Home() {
 
   useEffect(() => {
     // mapboxgl env
-    mapboxgl.accessToken = 'pk.eyJ1IjoiZHJhZ21vdmUiLCJhIjoiY2tkc3hrOGw2MGppMzJxcXNweW82aHVkdSJ9.Jknx5RF4tQyeI5M1vwOZOg';
+    mapboxgl.accessToken = mapboxglToken;
 
     const initMap = ({ setMap, mapContainer }) => {
       const _map = new mapboxgl.Map({
@@ -91,7 +100,9 @@ export default function Home() {
       </div>
     </Layout>
   );
-}
+};
+
+export default Home;
 
 /*
 // TODO: https://nextjs.org/learn/basics/dynamic-routes
